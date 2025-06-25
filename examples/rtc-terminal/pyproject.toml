@@ -1,0 +1,13 @@
+[project]
+name = "rtc-terminal"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pyaudio>=0.2.14",
+    "pyrtc-volcengine-third[vad]",
+]
+
+[tool.uv.sources]
+pyrtc-volcengine-third = { path = "../../" }

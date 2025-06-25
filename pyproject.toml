@@ -1,0 +1,29 @@
+[project]
+name = "pyrtc-volcengine-third"
+version = "0.1.0.dev1"
+description = "字节跳动火山引擎实时语音大模型Python SDK，非官方"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "dataclasses>=0.6",
+    "pydantic>=2.11.7",
+    "python-dotenv>=1.1.0",
+    "python-socks[asyncio]>=2.7.1",
+    "websockets>=15.0.1",
+]
+
+[project.optional-dependencies]
+vad = [
+    "noisereduce>=3.0.3",
+    "numpy>=2.2.6",
+    "webrtcvad>=2.0.10",
+    "setuptools>=80.9.0",
+]
+
+[tool.uv.workspace]
+exclude = ["examples/*"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["pyrtc_volcengine*"]
+exclude = ["examples*", "__pycache__", "uv.lock"]
