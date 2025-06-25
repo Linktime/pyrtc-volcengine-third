@@ -692,7 +692,7 @@ requires-dist = [
     { name = "numpy", marker = "extra == 'vad'", specifier = ">=2.2.6" },
     { name = "pydantic", specifier = ">=2.11.7" },
     { name = "python-socks", extras = ["asyncio"], specifier = ">=2.7.1" },
-    { name = "setuptools", marker = "extra == 'vad'", specifier = ">=80.9.0" },
+    { name = "setuptools", marker = "extra == 'vad'", specifier = ">=80.9.0,<81" },
     { name = "webrtcvad", marker = "extra == 'vad'", specifier = ">=2.0.10" },
     { name = "websockets", specifier = ">=15.0.1" },
 ]

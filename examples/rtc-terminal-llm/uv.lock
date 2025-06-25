@@ -1082,7 +1082,6 @@ source = { virtual = "../../" }
 dependencies = [
     { name = "dataclasses" },
     { name = "pydantic" },
-    { name = "python-dotenv" },
     { name = "python-socks", extra = ["asyncio"] },
     { name = "websockets" },
 ]
@@ -1098,13 +1097,12 @@ vad = [
 
 [package.metadata]
 requires-dist = [
-    { name = "dataclasses", specifier = ">=0.8" },
+    { name = "dataclasses", specifier = ">=0.6" },
     { name = "noisereduce", marker = "extra == 'vad'", specifier = ">=3.0.3" },
     { name = "numpy", marker = "extra == 'vad'", specifier = ">=2.2.6" },
     { name = "pydantic", specifier = ">=2.11.7" },
-    { name = "python-dotenv", specifier = ">=1.1.0" },
     { name = "python-socks", extras = ["asyncio"], specifier = ">=2.7.1" },
-    { name = "setuptools", marker = "extra == 'vad'", specifier = ">=80.9.0" },
+    { name = "setuptools", marker = "extra == 'vad'", specifier = ">=80.9.0,<81" },
     { name = "webrtcvad", marker = "extra == 'vad'", specifier = ">=2.0.10" },
     { name = "websockets", specifier = ">=15.0.1" },
 ]
@@ -1152,6 +1150,7 @@ dependencies = [
     { name = "aiohttp" },
     { name = "pyaudio" },
     { name = "pyrtc-volcengine-third", extra = ["vad"] },
+    { name = "python-dotenv" },
 ]
 
 [package.metadata]
@@ -1159,6 +1158,7 @@ requires-dist = [
     { name = "aiohttp", specifier = ">=3.12.13" },
     { name = "pyaudio", specifier = ">=0.2.14" },
     { name = "pyrtc-volcengine-third", extras = ["vad"], virtual = "../../" },
+    { name = "python-dotenv", specifier = ">=1.1.0" },
 ]
 
 [[package]]

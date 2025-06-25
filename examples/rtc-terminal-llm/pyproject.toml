@@ -8,6 +8,7 @@ dependencies = [
     "aiohttp>=3.12.13",
     "pyaudio>=0.2.14",
     "pyrtc-volcengine-third[vad]",
+    "python-dotenv>=1.1.0",
 ]
 
 [tool.uv.sources]
