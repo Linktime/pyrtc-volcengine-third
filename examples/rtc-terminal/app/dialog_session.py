@@ -14,8 +14,8 @@ from .audio_manager import AudioConfig, AudioDeviceManager, input_audio_config, 
 class TerminalDialogSession(DialogSession):
     """对话会话管理类"""
 
-    def __init__(self, ws_config: Dict[str, Any], handlers=DEFAULT_HANDLERS, context=None):
-        super().__init__(ws_config, handlers=handlers, context=context)
+    def __init__(self, config: Dict[str, Any], handlers=DEFAULT_HANDLERS, context=None):
+        super().__init__(config, handlers=handlers, context=context)
         self.audio_device = AudioDeviceManager(
             AudioConfig(**input_audio_config),
             AudioConfig(**output_audio_config)
@@ -67,6 +67,7 @@ class TerminalDialogSession(DialogSession):
                     audio_data = stream.read(input_audio_config["chunk"], exception_on_overflow=False)
                     if vad.is_speech(audio_data, input_audio_config["sample_rate"]):
                         self.context.input_audio_queue.put(audio_data)
+                    self.context.input_audio_queue.put(audio_data)
                 await asyncio.sleep(0.01)  # 避免CPU过度使用
             except Exception as e:
                 print(f"读取麦克风数据出错: {e}")

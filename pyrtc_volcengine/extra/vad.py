@@ -20,7 +20,6 @@ int16_info = np.iinfo(np.int16)
 MAX_INT16_ABS_VALUE_FROM_NUMPY = float(abs(int16_info.min))
 
 
-
 def reduce_noise(audio_data: bytes, sample_rate: int):
     audio_array = np.frombuffer(audio_data, dtype=np.int16)
 

@@ -169,10 +169,10 @@ LLM_DIALOG_HANDLERS.update({
 class LLMDialogSession(DialogSession):
     """对话会话管理类"""
 
-    def __init__(self, ws_config: Dict[str, Any], handlers=LLM_DIALOG_HANDLERS, context: LLMDialogContext=None):
+    def __init__(self, config: Dict[str, Any], handlers=LLM_DIALOG_HANDLERS, context: LLMDialogContext=None):
         context = context or LLMDialogContext()
 
-        super().__init__(ws_config, handlers=handlers, context=context)
+        super().__init__(config, handlers=handlers, context=context)
         self.audio_device = AudioDeviceManager(
             AudioConfig(**input_audio_config),
             AudioConfig(**output_audio_config)

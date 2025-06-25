@@ -1,13 +1,12 @@
 [project]
 name = "pyrtc-volcengine-third"
-version = "0.1.0.dev1"
+version = "0.1.0"
 description = "字节跳动火山引擎实时语音大模型Python SDK，非官方"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "dataclasses>=0.6",
     "pydantic>=2.11.7",
-    "python-dotenv>=1.1.0",
     "python-socks[asyncio]>=2.7.1",
     "websockets>=15.0.1",
 ]
@@ -17,7 +16,7 @@ vad = [
     "noisereduce>=3.0.3",
     "numpy>=2.2.6",
     "webrtcvad>=2.0.10",
-    "setuptools>=80.9.0",
+    "setuptools>=80.9.0,<81", # webrtcvad 依赖pkg_resources，但这个库已经好几年没更新了，生产上实际使用可以更换成SileroVAD，但由于其使用pyTorch对内存和CPU的开销会更大
 ]
 
 [tool.uv.workspace]
@@ -27,3 +26,15 @@ exclude = ["examples/*"]
 where = ["."]
 include = ["pyrtc_volcengine*"]
 exclude = ["examples*", "__pycache__", "uv.lock"]
+
+[[tool.uv.index]]
+name = "pypi"
+url = "https://pypi.org/simple/"
+publish-url = "https://pypi.org/legacy/"
+explicit = true
+
+[[tool.uv.index]]
+name = "testpypi"
+url = "https://test.pypi.org/simple/"
+publish-url = "https://test.pypi.org/legacy/"
+explicit = true

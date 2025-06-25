@@ -15,10 +15,10 @@ ContextT = TypeVar('_ContextT', bound=DialogContext)
 
 class DialogSession(Generic[ContextT]):
 
-    def __init__(self, ws_config: Dict[str, Any], handlers: Dict[str, AbstractHandler]=DEFAULT_HANDLERS, context: DialogContext=None):
+    def __init__(self, config: Dict[str, Any], handlers: Dict[str, AbstractHandler]=DEFAULT_HANDLERS, context: DialogContext=None):
         self.handlers = handlers
         self.session_id = str(uuid.uuid4())
-        self.client = RealtimeDialogClient(config=ws_config, session_id=self.session_id)
+        self.client = RealtimeDialogClient(config=config, session_id=self.session_id)
         self.context = context or DialogContext()
 
     async def handle_server_response(self, response: Dict[str, Any]) -> None:
@@ -32,7 +32,7 @@ class DialogSession(Generic[ContextT]):
             if handler:
                 await handler.process(handler.build_generic_instance(response['payload_msg']), self.context)
             if response['event'] != ServerEventEnum.TTS_RESPONSE.value:
-                PYRTC_LOGGER.debug(response)
+                PYRTC_LOGGER.info(response)
 
         else:
             PYRTC_LOGGER.error(f"语音模型服务器错误: {response}")
